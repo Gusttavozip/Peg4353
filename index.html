@@ -42,15 +42,14 @@ img {
 <script>
 const terminal = document.getElementById("terminal");
 
-const mensagens = [
-  "C:\\Users\\Usuario> iniciando sistema...",
-  "Acessando rede...",
+const mensagens = 
+  "Acessando rede....",
   "",
-  "Ola tudo bem ?..",
+  "Oiie tudo bem ?..",
   "",
   "Não clique em links desconhecidos ta ?...",
   "",
-  "Carregando mensagem final..."
+  "Carregando......"
 ];
 
 let linha = 0;
@@ -61,12 +60,12 @@ function digitar() {
     if (char < mensagens[linha].length) {
       terminal.innerHTML += mensagens[linha].charAt(char);
       char++;
-      setTimeout(digitar, 40);
+      setTimeout(digitar, 20);
     } else {
       terminal.innerHTML += "\n";
       linha++;
       char = 0;
-      setTimeout(digitar, 3000); // ⏳ intervalo de 1 segundos
+      setTimeout(digitar, 1500); // ⏳ intervalo de 1 segundos
     }
   } else {
     mostrarImagem();
@@ -75,7 +74,7 @@ function digitar() {
 
 function mostrarImagem() {
   const img = document.createElement("img");
-  img.src = "https://imgur.com/gallery/kidding-O7i7pQ5#/t/catsmeme"; // você pode trocar depois
+  img.src = "https://i.imgur.com/lYHGdRx.jpeg"; // você pode trocar depois
   document.body.appendChild(img);
 }
 
