@@ -2,40 +2,85 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Carregando...</title>
+<title>Terminal</title>
+
 <style>
-  body {
-    background: black;
-    color: lime;
-    font-family: monospace;
-    text-align: center;
-    margin-top: 20%;
-  }
+body {
+  background-color: black;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  padding: 20px;
+  font-size: 20px;
+}
+
+#terminal {
+  white-space: pre-line;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background: #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { background: transparent; }
+}
+
+img {
+  margin-top: 30px;
+  max-width: 300px;
+}
 </style>
 </head>
+
 <body>
 
-<h1 id="texto">Conectando ao sistema...</h1>
-
-<audio id="som" src="https://www.myinstants.com/media/sounds/scream.mp3"></audio>
+<div id="terminal"></div>
 
 <script>
-setTimeout(() => {
-  document.getElementById("texto").innerText = "Acessando arquivos...";
-}, 2000);
+const terminal = document.getElementById("terminal");
 
-setTimeout(() => {
-  document.getElementById("texto").innerText = "Enviando seus dados...";
-}, 4000);
+const mensagens = [
+  "C:\\Users\\Usuario> iniciando sistema...",
+  "Carregando módulos...",
+  "Acessando rede...",
+  "",
+  "Ola tudo bem ?..",
+  "",
+  "Não clique em links desconhecidos ta ?...",
+  "",
+  "Carregando mensagem final..."
+];
 
-setTimeout(() => {
-  document.body.style.background = "white";
-  document.body.innerHTML = `
-    <img src="https://i.imgur.com/8Km9tLL.jpg" width="100%">
-    <h1 style="color:black;">KKKK foi mal, é zoeira 😂</h1>
-  `;
-  document.getElementById("som").play();
-}, 6000);
+let linha = 0;
+let char = 0;
+
+function digitar() {
+  if (linha < mensagens.length) {
+    if (char < mensagens[linha].length) {
+      terminal.innerHTML += mensagens[linha].charAt(char);
+      char++;
+      setTimeout(digitar, 40);
+    } else {
+      terminal.innerHTML += "\n";
+      linha++;
+      char = 0;
+      setTimeout(digitar, 3000); // ⏳ intervalo de 3 segundos
+    }
+  } else {
+    mostrarImagem();
+  }
+}
+
+function mostrarImagem() {
+  const img = document.createElement("img");
+  img.src = "https://i.imgur.com/8Km9tLL.jpg"; // você pode trocar depois
+  document.body.appendChild(img);
+}
+
+digitar();
 </script>
 
 </body>
