@@ -44,7 +44,6 @@ const terminal = document.getElementById("terminal");
 
 const mensagens = [
   "C:\\Users\\Usuario> iniciando sistema...",
-  "Carregando módulos...",
   "Acessando rede...",
   "",
   "Ola tudo bem ?..",
@@ -67,7 +66,7 @@ function digitar() {
       terminal.innerHTML += "\n";
       linha++;
       char = 0;
-      setTimeout(digitar, 3000); // ⏳ intervalo de 3 segundos
+      setTimeout(digitar, 3000); // ⏳ intervalo de 1 segundos
     }
   } else {
     mostrarImagem();
